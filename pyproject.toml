@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "maltego"
+version = "0.1.0"
+description = ""
+authors = ["neytirri <129419810+neytirri@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.0"
+django-debug-toolbar = "^4.2.0"
+pytest-django = "^4.7.0"
+argon2-cffi = "^23.1.0"
+psycopg-binary = "^3.1.14"
+minio = "^7.2.0"
+psycopg2-binary = "^2.9.9"
+pillow = "^10.1.0"
+django-storages = "^1.14.2"
+boto3 = "^1.33.11"
+cuid = "^0.4"
+django-compressor = "^4.4"
+django-libsass = "^0.9"
+django-browser-reload = "^1.12.1"
+djlint = "^1.34.0"
+django-extensions = "^3.2.3"
+python-logstash = "^0.4.8"
+django-filter = "^23.5"
+django-redis-sessions = "^0.6.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

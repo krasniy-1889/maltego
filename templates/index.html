@@ -1,0 +1,41 @@
+{% extends "layouts/_base.html" %}
+{% block content %}
+    <div class="container"></div>
+    <div x-data="{ users: []}" x-init="getUsers()">
+        USERS LIST
+        <ul>
+            <template x-for="user in users" :key="user.id">
+                <li>
+                    <span class="" x-text="user.username"></span>
+                </li>
+            </template>
+        </ul>
+    </div>
+    <button class="btn btn-primary" @click="getUsers()">Get Users</button>
+    <div class="row">
+        {% for count in counts %}
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="card">
+                    <svg class="bd-placeholder-img card-img-top"
+                         width="100%"
+                         height="180"
+                         xmlns="http://www.w3.org/2000/svg"
+                         role="img"
+                         aria-label="Placeholder: Image cap"
+                         preserveAspectRatio="xMidYMid slice"
+                         focusable="false">
+                        <title>{{ user.username }}</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em">{{ user.username }}</text>
+                        </svg>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ user.email }}</h5>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</div>
+{% endblock content %}

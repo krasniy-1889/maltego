@@ -1,0 +1,44 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: maltego
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+
+  minio:
+    image: minio/minio:latest
+    environment:
+      MINIO_ACCESS_KEY: root
+      MINIO_SECRET_KEY: password
+    command: 'minio server /data/minio --console-address ":8900"'
+    ports:
+      - "9000:9000"
+      - "8900:8900"
+    volumes:
+      - minio_data:/data
+
+  redis:
+    image: redis:7.2.3
+    container_name: my_redis
+    ports:
+      - "6379:6379"
+
+  # elasticsearch:
+  #   image: docker.elastic.co/elasticsearch/elasticsearch:8.11.3
+  #   environment:
+  #     - discovery.type=single-node
+  #   ports:
+  #     - "9200:9200"
+
+
+volumes:
+  postgres_data:
+  minio_data:
