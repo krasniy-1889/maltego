@@ -27,9 +27,9 @@ DATABASES = {
 # S3 Storage
 DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
-AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID", "eAQojoueAhfznuemBHJ0")
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID", "5Ypmahm0mOURHkVSulMZ")
 AWS_SECRET_ACCESS_KEY = os.environ.get(
-    "AWS_SECRET_ACCESS_KEY", "kaXyI1esXlZc3GSeFCYFXHDkL9V5femMScrM6Xmm"
+    "AWS_SECRET_ACCESS_KEY", "RAw1ro8tP19qxfgYKEdv0N5L0WKZB9hRZ7VM8zWW"
 )
 AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME", "django")
 if DEBUG:

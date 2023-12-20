@@ -26,6 +26,7 @@ django-extensions = "^3.2.3"
 python-logstash = "^0.4.8"
 django-filter = "^23.5"
 django-redis-sessions = "^0.6.2"
+faker = "^21.0.0"
 
 
 [build-system]

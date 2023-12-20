@@ -430,6 +430,20 @@ files = [
 ]
 
 [[package]]
+name = "faker"
+version = "21.0.0"
+description = "Faker is a Python package that generates fake data for you."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "Faker-21.0.0-py3-none-any.whl", hash = "sha256:ff61cca42547795bee8a11319792a8fee6d0f0cd191e831f7f3050c5851fcd8a"},
+    {file = "Faker-21.0.0.tar.gz", hash = "sha256:2d8a350e952225a145307d7461881c44a1c9320e90fbe8bd903d5947f133f3ec"},
+]
+
+[package.dependencies]
+python-dateutil = ">=2.4"
+
+[[package]]
 name = "html-tag-names"
 version = "0.1.2"
 description = "List of known HTML tag names"
@@ -1236,4 +1250,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "1f67e5dcaba6c02b0a2414dcac142ec4da0723142e58a4859f1cf665f40fc3f2"
+content-hash = "9aabb2783e62337dd0d1787de1ec5317130a14ce37498f2b29b696a97bf2aeea"

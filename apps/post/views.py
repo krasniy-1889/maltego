@@ -11,21 +11,31 @@ from .models import Post
 
 class PostListViews(ListView):
     model = Post
-    template_name = "post/post_list.html"
+    queryset = (
+        Post.objects.select_related(
+            "status",
+            "type",
+        )
+        .prefetch_related(
+            "tags",
+            "genres",
+        )
+        .all()
+    )
+    template_name = "post/list.html"
     context_object_name = "posts"
-    queryset = Post.objects.prefetch_related("tags").all()
+    paginate_by = 20
 
-    @method_decorator(cache_page(60 * 60 * 24))
-    def get(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
-        return super().get(request, *args, **kwargs)
+    # @method_decorator(cache_page(60 * 15))
+    # def get(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
+    #     return super().get(request, *args, **kwargs)
 
 
 class PostDetailView(DetailView):
     model = Post
-    queryset = Post.objects.prefetch_related("tags").all()
-    template_name = "post/post_detail.html"
+    queryset = Post.objects.select_related("author").prefetch_related(
+        "tags",
+        "genres",
+    )
+    template_name = "post/detail.html"
     context_object_name = "post"
-
-    @method_decorator(cache_page(60 * 60 * 24))
-    def get(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
-        return super().get(request, *args, **kwargs)

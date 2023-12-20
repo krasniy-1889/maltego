@@ -36,6 +36,7 @@ class TagAdmin(admin.ModelAdmin):
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = [
+        "id",
         "rus_name",
         "status",
         "likes",
@@ -56,19 +57,19 @@ class ChapterAdmin(admin.ModelAdmin):
         return obj.post.rus_name
 
 
-@admin.register(ChapterPage)
-class ChapterPageAdmin(admin.ModelAdmin):
-    list_display = [
-        "id",
-        "chapter__count",
-        "post__rus_name",
-    ]
+# @admin.register(ChapterPage)
+# class ChapterPageAdmin(admin.ModelAdmin):
+#     list_display = [
+#         "id",
+#         "chapter__count",
+#         "post__rus_name",
+#     ]
 
-    def chapter__count(self, obj):
-        return obj.chapter.chapter_number
+#     def chapter__count(self, obj):
+#         return obj.chapter.chapter_number
 
-    def post__rus_name(self, obj):
-        return obj.post.rus_name
+#     def post__rus_name(self, obj):
+#         return obj.post.rus_name
 
 
 @admin.register(Like)
