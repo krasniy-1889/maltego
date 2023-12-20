@@ -9,6 +9,5 @@ local_settings.py
 db.sqlite3
 # macOS
 .DS_Store
-
 # IDE
 .vscode/
