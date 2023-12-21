@@ -4,28 +4,6 @@ from django.template.defaultfilters import slugify
 from .helpers import chapter_page_upload_to
 
 
-class Status(models.Model):
-    """Статус манги - [Заморожен, Продолжается, Анонс, прочее....]"""
-
-    name = models.CharField(max_length=255, unique=True)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = "Status"
-        verbose_name_plural = "Status"
-
-
-class Type(models.Model):
-    """Тип манги - [Манга, Манхва, Маньхуа, прочее....]"""
-
-    name = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.name
-
-
 class Genre(models.Model):
     """Жанр манги"""
 
@@ -45,32 +23,42 @@ class Tag(models.Model):
 
 
 class Post(models.Model):
-    AGE_ALL = "ALL"
-    AGE_6 = "6+"
-    AGE_12 = "12+"
-    AGE_16 = "16+"
-    AGE_18 = "18+"
+    class AGE_LIMIT(models.TextChoices):
+        _ALL = "all", "All"
+        _6 = "6+", "6+"
+        _12 = "12+", "12+"
+        _16 = "16+", "16+"
+        _18 = "18+", "18+"
 
-    AGE_LIMIT = (
-        (AGE_ALL, "All"),
-        (AGE_6, "6+"),
-        (AGE_12, "12+"),
-        (AGE_16, "16+"),
-        (AGE_18, "18+"),
-    )
+    class STATUSES(models.TextChoices):
+        _DRAFT = "черновик", "Черновик"
+        _PUBLISHED = "опубликовано", "Опибликовано"
+        _FROZED = "заморожено", "Заморожено"
+        _ANONS = "анонс", "Анонс"
 
+    class TYPES(models.TextChoices):
+        _MANGA = "манга", "Манга"
+        _MANHWA = "манхва", "Манхва"
+        _MANHUA = "маньхуа", "Маньхуа"
+        _WESTERN_COMICS = "западный комикс", "Западный комикс"
+        _WEBTOON = "рукомикс", "Рукомикс"
+        _INDONESIAN_COMICS = "индонезийский комикс", "Индонезийский комикс"
+        _OTHER = "другое", "Другое"
+
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    slug = models.SlugField(max_length=255, unique=True)
     rus_name = models.CharField(max_length=255)
     en_name = models.CharField(max_length=255)
     original_name = models.CharField(max_length=255)
     description = models.TextField()
     poster = models.ImageField(upload_to="posters/")
     issue_year = models.DateField()
-    age_limit = models.CharField(max_length=7, choices=AGE_LIMIT)
-    status = models.ForeignKey(Status, on_delete=models.CASCADE)
+    age_limit = models.CharField(max_length=7, choices=AGE_LIMIT.choices)
+    status = models.CharField(max_length=20, choices=STATUSES.choices)
+    type = models.CharField(max_length=20, choices=TYPES.choices)
     likes = models.PositiveIntegerField(default=0)
     views = models.PositiveIntegerField(default=0)
     count_chapters = models.PositiveIntegerField(default=0)
-    type = models.ForeignKey(Type, on_delete=models.CASCADE)
     genres = models.ManyToManyField(Genre, related_name="genres")
     tags = models.ManyToManyField(Tag, related_name="tags")
     is_licensed = models.BooleanField(default=False)
