@@ -46,7 +46,6 @@ class Post(models.Model):
         _OTHER = "другое", "Другое"
 
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-    slug = models.SlugField(max_length=255, unique=True)
     rus_name = models.CharField(max_length=255)
     en_name = models.CharField(max_length=255)
     original_name = models.CharField(max_length=255)

@@ -2,7 +2,7 @@ from typing import Any
 from django.contrib import admin
 
 from .forms import ChapterPageForm
-from .models import Status, Type, Genre, Tag, Post, Chapter, ChapterPage, Like
+from .models import Genre, Tag, Post, Chapter, ChapterPage, Like
 
 
 # * Inlines
@@ -13,14 +13,6 @@ class ChapterPageInline(admin.TabularInline):
 
 
 # * Model
-@admin.register(Status)
-class StatusAdmin(admin.ModelAdmin):
-    list_display = ["name"]
-
-
-@admin.register(Type)
-class TypeAdmin(admin.ModelAdmin):
-    ist_display = ["name"]
 
 
 @admin.register(Genre)
