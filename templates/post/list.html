@@ -5,7 +5,13 @@
       {% for post in posts %}
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
           <div class="card">
-            <img src="{{ post.poster.url }}" class="card-img-top" alt="...">
+            {% if post.poster %}
+              <img src="{{ post.poster.url }}" class="card-img-top" alt="...">
+            {% else %}
+              <img src="https://remanga.org/media/titles/two-new-life/f64c96eaab11057ba1ac6e99069b309f.jpg"
+                   class="card-img-top"
+                   alt="...">
+            {% endif %}
             <div class="card-body">
               <h5 class="card-title text-info">{{ post.rus_name }}</h5>
               <p class="card-text">{{ post.description }}</p>
@@ -20,5 +26,6 @@
         <div>Постов нет</div>
       {% endfor %}
     </div>
+    {% include "includes/pagination.html" %}
   </div>
 {% endblock content %}

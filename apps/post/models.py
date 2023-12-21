@@ -1,6 +1,6 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.template.defaultfilters import slugify
-from ..user.models import User
 from .helpers import chapter_page_upload_to
 
 
@@ -113,7 +113,7 @@ class Like(models.Model):
     """Модель лайков"""
 
     # TODO: добавить логику дизлайков
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
     def __str__(self):

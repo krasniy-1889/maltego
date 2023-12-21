@@ -95,7 +95,7 @@ PASSWORD_HASHERS = [
 ]
 
 
-AUTH_USER_MODEL = "user.User"
+AUTH_USER_MODEL = "user.CustomUser"
 
 # Sessions
 SESSION_ENGINE = "redis_sessions.session"

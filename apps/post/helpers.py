@@ -1,5 +1,5 @@
-from ..user.models import User
 from cuid import cuid
+from django.contrib.auth import get_user_model
 
 
 # * Model Helpers
@@ -10,4 +10,4 @@ def chapter_page_upload_to(instance, filename):
 
 
 def get_default_user():
-    return User.objects.filter(is_superuser=True).first()
+    return get_user_model().objects.filter(is_superuser=True).first()

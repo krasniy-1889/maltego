@@ -61,8 +61,8 @@ class Command(BaseCommand):
             post.genres.set(genres)
             post.tags.set(tags)
 
-            image_path = os.path.abspath("./pirate.jpg")
-            with open(image_path, "rb") as f:
-                post.poster.save(f"pirate_{post.pk}.jpg", File(f), save=True)
+            # image_path = os.path.abspath("./pirate.jpg")
+            # with open(image_path, "rb") as f:
+            #     post.poster.save(f"pirate_{post.pk}.jpg", File(f), save=True)
 
         self.stdout.write(self.style.SUCCESS(f"Successfully seeded {total} posts"))

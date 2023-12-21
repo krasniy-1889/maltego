@@ -1,8 +1,7 @@
 from typing import Any
+from django.contrib.auth import get_user_model
 
 from django.views.generic import TemplateView
-
-from apps.user.models import User
 
 
 class HomeView(TemplateView):
@@ -11,5 +10,5 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs) -> dict[str, Any]:
         context = super().get_context_data(**kwargs)
         context["counts"] = range(1, 20)
-        context["user"] = User.objects.first()
+        context["user"] = get_user_model().objects.first()
         return context

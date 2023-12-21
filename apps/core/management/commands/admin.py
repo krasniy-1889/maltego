@@ -1,6 +1,5 @@
+from django.contrib.auth import get_user_model
 from django.core.management import BaseCommand
-
-from apps.user.models import User
 
 
 class Command(BaseCommand):
@@ -11,5 +10,5 @@ class Command(BaseCommand):
         username = "jake"
         password = "jewel"
         email = "jake@pandora.navi"
-        User.objects.create_superuser(username, email, password)
+        get_user_model().objects.create_superuser(username, email, password)
         self.stdout.write(self.style.SUCCESS("Admin user created successfully!"))
