@@ -139,18 +139,6 @@ SESSION_REDIS = {
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
-    "handlers": {
-        "logstash": {
-            "level": "DEBUG",
-            "class": "logstash.TCPLogstashHandler",
-            "host": "logstash",
-            "port": 6000,
-            "version": 1,
-            "message_type": "django",
-            "fqdn": False,
-            "tags": ["django.request"],
-        },
-    },
     "loggers": {
         "django": {
             "handlers": ["logstash"],
