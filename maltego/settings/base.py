@@ -1,5 +1,9 @@
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+# load .env file
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -18,6 +22,11 @@ INSTALLED_APPS = [
     # ! Debug
     "django_browser_reload",
     "debug_toolbar",
+    # * Allauth
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.github",
     # * Application
     # "taggit",
     "django_filters",
@@ -36,6 +45,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
     # ! Debug
     "django_browser_reload.middleware.BrowserReloadMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
@@ -63,6 +73,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "maltego.wsgi.application"
 
+
+# Allauth providers settings
+SOCIALACCOUNT_PROVIDERS = {
+    "github": {
+        "APP": {
+            "client_id": os.environ.get("GITHUB_CLIENT_ID"),
+            "secret": os.environ.get("GITHUB_CLIENT_SECRET"),
+            "key": "",
+        },
+    }
+}
+
+# Authentication
+AUTHENTICATION_BACKENDS = [
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
 
 # REST Framework
 # REST_FRAMEWORK = {
