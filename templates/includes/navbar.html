@@ -25,7 +25,8 @@
              role="button"
              data-bs-toggle="dropdown"
              aria-expanded="false">Admin Actions</a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <ul class="dropdown-menu dropdown-menu-start"
+              aria-labelledby="navbarDropdown">
             {% if request.user.is_authenticated and request.user.is_staff %}
               <li>
                 <a class="dropdown-item" href="{% url 'admin:index' %}">Admin Panel</a>
@@ -41,24 +42,45 @@
       <div class="d-flex flex-column flex-lg-row">
         <form>
           <div class="d-flex me-lg-2">
-            <input class="form-control me-2"
+            <input class="form-control me-2 w-auto"
                    type="search"
-                   placeholder="Search"
-                   aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+                   placeholder="Поиск..."
+                   aria-label="Поиск">
+            <button class="btn btn-outline-success" type="submit">Поиск</button>
           </div>
         </form>
         <div>
           {% if request.user.is_authenticated %}
-            <div>{{ request.user.username }}</div>
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle active"
+                   href="#"
+                   id="userDropdown"
+                   role="button"
+                   data-bs-toggle="dropdown"
+                   aria-expanded="false">{{ request.user.username }}</a>
+                <ul class="dropdown-menu dropdown-menu-end"
+                    aria-labelledby="userDropdown">
+                  <li>
+                    <a class="dropdown-item" href="/profile">Профиль</a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'account_logout' %}">Выйти</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
           {% else %}
             <div class="btn-group mt-1 mt-lg-0">
               <button class="btn btn-success"
                       data-bs-toggle="modal"
-                      data-bs-target="#loginModal">Login</button>
+                      data-bs-target="#loginModal">Войти</button>
               <button class="btn btn-warning"
                       data-bs-toggle="modal"
-                      data-bs-target="#registerModal">Register</button>
+                      data-bs-target="#registerModal">Регистрация</button>
               {% include "user/auth/modal/login.html" %}
               {% include "user/auth/modal/register.html" %}
             </div>

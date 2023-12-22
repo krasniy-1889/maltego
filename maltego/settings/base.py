@@ -32,10 +32,13 @@ INSTALLED_APPS = [
     "django_filters",
     "django_extensions",
     "storages",
+    "tailwind",
+    "theme",
     "apps.core",
     "apps.user",
     "apps.post",
 ]
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -89,6 +92,9 @@ SOCIALACCOUNT_PROVIDERS = {
 AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
+
+# Tailwind
+TAILWIND_APP_NAME = "theme"
 
 # REST Framework
 # REST_FRAMEWORK = {

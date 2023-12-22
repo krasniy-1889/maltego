@@ -1,22 +1,53 @@
-<div class="modal fade"
-     id="loginModal"
-     tabindex="-1"
-     aria-labelledby="LoginModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog">
+<div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"></button>
-      </div>
-      <div class="modal-body">...</div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+      <form method="post" action="{% url 'account_login' %}">
+        {% csrf_token %}
+        <div class="modal-header">
+          <h5 class="modal-title">Войти</h5>
+          <button type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="Username">
+              Логин<span class="text-danger">*</span>
+            </label>
+            <input type="text"
+                   name="username"
+                   class="form-control"
+                   id="Username"
+                   placeholder="Логин...">
+          </div>
+          <div class="mb-3">
+            <label for="Password">
+              Пароль<span class="text-danger">*</span>
+            </label>
+            <input type="password"
+                   name="password"
+                   class="form-control"
+                   id="Password"
+                   placeholder="Пароль...">
+          </div>
+          <div class="mb-3">
+            <input class="form-check-input"
+                   type="checkbox"
+                   value=""
+                   id="remember"
+                   required>
+            <label class="form-check-label" for="remember">Запомнить меня</label>
+            <a href="#" class="float-end">Забыл пароль</a>
+          </div>
+        </div>
+        <div class="modal-footer pt-4">
+          <button type="button" class="btn btn-success mx-auto w-100">Логин</button>
+        </div>
+        <p class="text-center">
+          Нет еще аккаунта? <a href="#">Регистрация</a>
+        </p>
+      </form>
     </div>
   </div>
 </div>

@@ -1,13 +1,12 @@
 {% load static %}
+{% load static tailwind_tags %}
 <!DOCTYPE html>
 <head></head>
 <html lang="en">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="{% static 'js/popper.min.js' %}"></script>
-  <script src="{% static 'js/bootstrap.min.js' %}"></script>
   <script src="{% static 'js/alpine.js' %}" defer></script>
-  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  {% tailwind_css %}
   <title>
     {% block title %}
       Django

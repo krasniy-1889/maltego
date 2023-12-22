@@ -13,10 +13,6 @@ class PostListViews(ListView):
     context_object_name = "posts"
     paginate_by = 20
 
-    # @method_decorator(cache_page(60 * 15))
-    # def get(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
-    #     return super().get(request, *args, **kwargs)
-
 
 class PostDetailView(DetailView):
     model = Post

@@ -29,6 +29,7 @@ django-redis-sessions = "^0.6.2"
 faker = "^21.0.0"
 django-allauth = "^0.59.0"
 python-dotenv = "^1.0.0"
+django-tailwind = "^3.8.0"
 
 
 [build-system]
