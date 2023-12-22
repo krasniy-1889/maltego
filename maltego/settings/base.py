@@ -99,8 +99,6 @@ AUTHENTICATION_BACKENDS = [
 # }
 
 # Password validation
-# https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -118,6 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.Argon2PasswordHasher",
+    "django.contrib.auth.hashers.PBKDF2PasswordHasher",
 ]
 
 
@@ -136,17 +135,17 @@ SESSION_REDIS = {
 }
 
 # Logging
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "loggers": {
-        "django": {
-            "handlers": ["logstash"],
-            "level": "DEBUG",
-            "propagate": True,
-        },
-    },
-}
+# LOGGING = {
+#     "version": 1,
+#     "disable_existing_loggers": False,
+#     "loggers": {
+#         "django": {
+#             "handlers": [""],
+#             "level": "DEBUG",
+#             "propagate": True,
+#         },
+#     },
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/

@@ -6,8 +6,7 @@ from .managers import CustomUserManager
 
 
 class CustomUser(AbstractUser):
-    avatar = models.ImageField(upload_to="images/", null=True, blank=True)
-
+    profile = models.OneToOneField("UserProfile", on_delete=models.CASCADE, null=True)
     objects = CustomUserManager()
 
     def __str__(self):
@@ -15,3 +14,12 @@ class CustomUser(AbstractUser):
 
     class Meta:
         db_table = "user_users"
+
+
+class UserProfile(models.Model):
+    avatar = models.ImageField(upload_to="images/", null=True, blank=True)
+    bio = models.TextField(max_length=800, blank=True, null=True)
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
