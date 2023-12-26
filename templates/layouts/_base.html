@@ -6,6 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="{% static 'js/alpine.js' %}" defer></script>
+  <script src="{% static 'js/preline.js' %}" defer></script>
   {% tailwind_css %}
   <title>
     {% block title %}
@@ -14,9 +15,7 @@
   </title>
 </head>
 <body>
-  <header>
-    {% include "includes/navbar.html" %}
-  </header>
+  {% include "includes/header.html" %}
   <main>
     {% block content %}
     {% endblock content %}

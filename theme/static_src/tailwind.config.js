@@ -33,18 +33,15 @@ module.exports = {
      * and make sure the pattern below matches your project structure.
      */
     // '../../**/*.py'
+    'node_modules/preline/dist/*.js',
   ],
   theme: {
     extend: {},
   },
   plugins: [
-    /**
-     * '@tailwindcss/forms' is the forms plugin that provides a minimal styling
-     * for forms. If you don't like it or have own styling for forms,
-     * comment the line below to disable '@tailwindcss/forms'.
-     */
     require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/aspect-ratio'),
+    require('preline/plugin'),
   ],
 };

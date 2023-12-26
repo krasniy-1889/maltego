@@ -3,7 +3,10 @@ from django.views.generic import DetailView, ListView
 from .models import Post
 
 
-class PostListViews(ListView):
+class A(ListView):
+    model = Post
+
+class PostListView(ListView):
     model = Post
     queryset = Post.objects.prefetch_related(
         "tags",

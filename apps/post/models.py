@@ -1,6 +1,9 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.template.defaultfilters import slugify
+from django.urls import reverse
+from django_extensions.db.fields import AutoSlugField
+
 from .helpers import chapter_page_upload_to
 
 
@@ -49,6 +52,12 @@ class Post(models.Model):
     rus_name = models.CharField(max_length=255)
     en_name = models.CharField(max_length=255)
     original_name = models.CharField(max_length=255)
+    slug = AutoSlugField(
+        max_length=255,
+        unique=True,
+        db_index=True,
+        populate_from=["rus_name", "pk"],
+    )  # type: ignore
     description = models.TextField()
     poster = models.ImageField(upload_to="posters/")
     issue_year = models.DateField()
@@ -72,6 +81,9 @@ class Post(models.Model):
 
     def __str__(self):
         return self.rus_name
+
+    def get_absolute_url(self):
+        return reverse("post_detail", {"pk": self.pk})
 
 
 class Chapter(models.Model):

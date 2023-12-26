@@ -2,15 +2,9 @@ from django.conf import settings
 from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path
 
-from .views import HomeView
+from .views import IndexView
 
+app_name = "core"
 urlpatterns = [
-    path("", HomeView.as_view(), name="home"),
-    path("manga/", include("apps.post.urls")),
+    path("", IndexView.as_view(), name="index"),
 ]
-
-if settings.DEBUG:
-    urlpatterns += [
-        path("__debug__/", include("debug_toolbar.urls")),
-        path("__reload__/", include("django_browser_reload.urls")),
-    ]

@@ -2,7 +2,9 @@ import os
 from django.core.files import File
 from django.core.management.base import BaseCommand
 from faker import Faker
-from ...models import Post, Status, Type, Genre, Tag
+
+from ...helpers import get_default_user
+from ...models import Post, Genre, Tag
 
 fake = Faker()
 
@@ -19,28 +21,18 @@ class Command(BaseCommand):
         total = kwargs["total"]
 
         for _ in range(10):
-            status = Status(name=fake.word())
-            status.save()
-
-        for _ in range(10):
-            type = Type(name=fake.word())
-            type.save()
-
-        for _ in range(10):
             genre = Genre(name=fake.word())
             genre.save()
 
         for _ in range(10):
             tag = Tag(name=fake.word())
             tag.save()
-
-        statuses = Status.objects.all()
-        types = Type.objects.all()
         genres = Genre.objects.all()
         tags = Tag.objects.all()
 
         for _ in range(total):
             post = Post(
+                user=get_default_user(),
                 rus_name=fake.sentence(nb_words=3),
                 en_name=fake.sentence(nb_words=3),
                 original_name=fake.sentence(nb_words=3),
@@ -49,11 +41,11 @@ class Command(BaseCommand):
                 age_limit=fake.random_element(
                     elements=("ALL", "6+", "12+", "16+", "18+")
                 ),
-                status=fake.random_element(elements=statuses),
+                status=Post.STATUSES._ANONS,
                 likes=fake.random_int(min=0, max=100),
                 views=fake.random_int(min=0, max=1000),
                 count_chapters=fake.random_int(min=0, max=50),
-                type=fake.random_element(elements=types),
+                type=Post.TYPES._MANHWA,
                 is_licensed=fake.boolean(),
                 is_erotic=fake.boolean(),
             )
