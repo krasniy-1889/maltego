@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+
 from dotenv import load_dotenv
 
 # load .env file
@@ -10,7 +11,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-c@+o-xa!ts#)8hv2l&-=ep3@hxq2ie8w8k258h1+xvaochl=@("
-
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -32,13 +32,10 @@ INSTALLED_APPS = [
     "django_filters",
     "django_extensions",
     "storages",
-    "tailwind",
-    "theme",
     "apps.core",
     "apps.user",
     "apps.post",
 ]
-
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -76,7 +73,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "maltego.wsgi.application"
 
-
 # Allauth providers settings
 SOCIALACCOUNT_PROVIDERS = {
     "github": {
@@ -93,8 +89,6 @@ AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
-# Tailwind
-TAILWIND_APP_NAME = "theme"
 
 # REST Framework
 # REST_FRAMEWORK = {
@@ -124,7 +118,6 @@ PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.Argon2PasswordHasher",
     "django.contrib.auth.hashers.PBKDF2PasswordHasher",
 ]
-
 
 AUTH_USER_MODEL = "user.CustomUser"
 
@@ -163,7 +156,6 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/

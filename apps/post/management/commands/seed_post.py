@@ -1,10 +1,11 @@
 import os
+
 from django.core.files import File
 from django.core.management.base import BaseCommand
 from faker import Faker
 
 from ...helpers import get_default_user
-from ...models import Post, Genre, Tag
+from ...models import Genre, Post, Tag
 
 fake = Faker()
 

@@ -83,7 +83,7 @@ class Post(models.Model):
         return self.rus_name
 
     def get_absolute_url(self):
-        return reverse("post_detail", {"pk": self.pk})
+        return reverse("post:detail", kwargs={"slug": self.slug})
 
 
 class Chapter(models.Model):
@@ -116,4 +116,4 @@ class Like(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.user.username} | {self.post.rus_name}"
+        return f"{self.user.username} | {self.post.rus_name}"  # type: ignore

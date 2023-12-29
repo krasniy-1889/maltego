@@ -1,10 +1,8 @@
 {% extends "layouts/_base.html" %}
 {% block content %}
-  <div class="container">
-    {% for post in posts %}
-      <div>{{ post.rus_name }}</div>
-    {% empty %}
-      <div>Постов нет</div>
-    {% endfor %}
-  </div>
+    <div class="container">
+        <h1>
+            {{ post.rus_name }}
+        </h1>
+    </div>
 {% endblock content %}

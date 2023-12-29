@@ -1,8 +1,7 @@
-from typing import Any
 from django.contrib import admin
 
 from .forms import ChapterPageForm
-from .models import Genre, Tag, Post, Chapter, ChapterPage, Like
+from .models import Chapter, ChapterPage, Genre, Like, Post, Tag
 
 
 # * Inlines
@@ -13,8 +12,6 @@ class ChapterPageInline(admin.TabularInline):
 
 
 # * Model
-
-
 @admin.register(Genre)
 class GenreAdmin(admin.ModelAdmin):
     list_display = ["name"]
@@ -47,21 +44,6 @@ class ChapterAdmin(admin.ModelAdmin):
 
     def post__rus_name(self, obj):
         return obj.post.rus_name
-
-
-# @admin.register(ChapterPage)
-# class ChapterPageAdmin(admin.ModelAdmin):
-#     list_display = [
-#         "id",
-#         "chapter__count",
-#         "post__rus_name",
-#     ]
-
-#     def chapter__count(self, obj):
-#         return obj.chapter.chapter_number
-
-#     def post__rus_name(self, obj):
-#         return obj.post.rus_name
 
 
 @admin.register(Like)
